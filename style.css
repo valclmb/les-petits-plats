@@ -44,3 +44,17 @@ nav label {
 .select-filters button:last-child{
     background-color: #ED6454;
 }
+
+.card-body-title {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+.card-body-title h2 {
+    font-size: 18px;
+}
+
+.card-body-infos ul {
+    list-style-type: none;
+    padding: 0;
+}
