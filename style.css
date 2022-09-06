@@ -1,0 +1,10 @@
+:root {
+    --color-title : #D04F4F;
+}
+body {
+    font-family: sans-serif;
+}
+h1 {
+    color: var(--color-title);
+    font-size: 35px;
+}
