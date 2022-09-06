@@ -8,13 +8,33 @@
     <link rel="stylesheet" href="style.css"/>
     <title>Les petits plats</title>
 </head>
-<body>
+<body class="container p-5">
     <header class="d-flex flex-column justify-content-center align-items-center">
         <img src="img/logo.png" alt="logo les petits plats">
         <h1 class="font-weight-bold">Les petits plats</h1>
     </header>
-    <main class="container">
-
+    <main>
+        <nav class="mt-2">
+            <div class="position-relative">
+                <input id="search-bar" type="text" placeholder="Rechercher une recette" class="border-0 p-3 bg-light rounded">
+                <label for="search-bar"><i class="fa-solid fa-magnifying-glass fa-xl"></i></label>
+            </div>
+            <div class="select-filters d-flex mt-3">
+                <button role="button" aria-haspopup="listbox" aria-expanded="true" aria-selected="true">
+                    Ingrédients
+                    <i class="fa-solid fa-angle-down"></i>
+                </button>
+                <button role="button" aria-haspopup="listbox" aria-expanded="true" aria-selected="true">
+                    Appareils
+                    <i class="fa-solid fa-angle-down"></i>
+                </button>
+                <button role="button" aria-haspopup="listbox" aria-expanded="true" aria-selected="true">
+                    Ustensiles
+                    <i class="fa-solid fa-angle-down"></i>
+                </button>
+            </div>
+        </nav>
     </main>
 </body>
+<script src="https://kit.fontawesome.com/8435413581.js" crossorigin="anonymous"></script>
 </html>

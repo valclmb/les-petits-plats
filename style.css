@@ -1,10 +1,46 @@
 :root {
-    --color-title : #D04F4F;
+    --color-primary : #D04F4F;
+    --color-bg : #E7E7E7
 }
 body {
     font-family: sans-serif;
 }
 h1 {
-    color: var(--color-title);
+    color: var(--color-primary);
     font-size: 35px;
+}
+nav input {
+    width: 100%;
+    font-size: 18 px;
+}
+nav input::placeholder {
+    color: #5d5d5d;
+}
+nav label {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.select-filters button{
+    border: 0;
+    padding: 20px 15px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin-right: 15px;
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.select-filters button:first-child{
+    background-color: #3282F7;
+}
+.select-filters button:nth-child(2) {
+    background-color: #68D9A4;
+}
+.select-filters button:last-child{
+    background-color: #ED6454;
 }
