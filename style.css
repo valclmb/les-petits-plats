@@ -4,7 +4,12 @@
 }
 body {
     font-family: sans-serif;
+ 
 }
+.container {
+    max-width: 1400px;
+}
+
 h1 {
     color: var(--color-primary);
     font-size: 35px;
@@ -44,7 +49,9 @@ nav label {
 .select-filters button:last-child{
     background-color: #ED6454;
 }
-
+.card-body {
+    background-color: var(--color-bg);
+}
 .card-body-title {
     display: flex;
     justify-content: space-between;
@@ -53,8 +60,20 @@ nav label {
 .card-body-title h2 {
     font-size: 18px;
 }
-
+.card-body-infos {
+    display: flex;
+    font-size: 12px;
+    max-height: 150px;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .card-body-infos ul {
     list-style-type: none;
     padding: 0;
+    width: 50%;
+}
+.card-body-infos p {
+    width: 50%;
 }

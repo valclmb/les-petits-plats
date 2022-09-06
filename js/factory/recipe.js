@@ -1,10 +1,9 @@
 const recipe = (data) => {
-  const { name, servings, ingredients, time } = data;
+  const { name, description, ingredients, time } = data;
 
   const getRecipeCardDOM = () => {
     const card = document.createElement("article");
-    card.classList.add("card");
-    card.classList.add("col-4");
+    card.classList.add("card", "col-sm-6", "col-lg-4", "border-0", "py-4");
 
     const img = document.createElement("img");
     img.setAttribute("src", "../../img/cardImg.png");
@@ -26,17 +25,23 @@ const recipe = (data) => {
     // infos
     const infos = document.createElement("section");
     infos.classList.add("card-body-infos");
+    // ingredients
     const list = document.createElement("ul");
+
     ingredients.forEach((ingr) => {
       const li = document.createElement("li");
-      console.log(ingr);
       li.textContent = `${ingr.ingredient}${
         ingr.quantity ? `: ${ingr.quantity}` : ""
       }${ingr.unit ? ingr.unit : ""}`;
       list.append(li);
     });
 
+    // Instruction
+    const instruct = document.createElement("p");
+    instruct.textContent = description;
+
     infos.append(list);
+    infos.append(instruct);
 
     body.append(title);
     body.append(infos);
