@@ -11,7 +11,6 @@ const getRecipes = async () => {
 const displayData = async (datas) => {
   const recipeContainer = document.querySelector(".recipes");
 
-  console.log(datas);
   datas.forEach((data) => {
     const recipeFactory = recipe(data);
     const recipeCardDOM = recipeFactory.getRecipeCardDOM();
