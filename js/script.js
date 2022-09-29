@@ -10,6 +10,7 @@ const getRecipes = async () => {
 
 const displayData = async (datas) => {
   const recipeContainer = document.querySelector(".recipes");
+  recipeContainer.innerHTML = "";
 
   datas.forEach((data) => {
     const recipeFactory = recipe(data);
@@ -21,5 +22,10 @@ const displayData = async (datas) => {
 const init = async () => {
   const recipes = await getRecipes();
   displayData(recipes);
+  const searchBar = document.querySelector("#search-bar");
+  searchBar.addEventListener("input", (e) => {
+    const result = searchFilter(e, recipes);
+    displayData(result);
+  });
 };
 init();
