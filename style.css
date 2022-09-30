@@ -28,17 +28,18 @@ nav label {
     transform: translateY(-50%);
 }
 .select-filters button{
+    position: relative;
     border: 0;
     padding: 20px 15px;
     border-radius: 5px;
     color: white;
     font-weight: bold;
     margin-right: 15px;
-    width: 170px;
+    min-width: 170px;
+    max-width: max-content;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 .select-filters button:first-child{
     background-color: #3282F7;
@@ -48,6 +49,41 @@ nav label {
 }
 .select-filters button:last-child{
     background-color: #ED6454;
+}
+.select-filters button input{
+    display: none;
+    border: 0;
+    background-color: transparent;
+    color: white;
+    width: 500px;
+}
+.select-filters button input:focus {
+    outline: none;
+}
+.select-filters button input::placeholder {
+    color: #efefef ;
+}
+.tag-div {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: inherit;
+    width: 100%;
+    max-height: 350px;
+    overflow: auto;
+    border-radius: 5px;
+}
+.tag-div span {
+    font-weight: normal;
+    width: 30%;
+    font-size: 15px;
+    text-align: left;
 }
 .card-body {
     background-color: var(--color-bg);

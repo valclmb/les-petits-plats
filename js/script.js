@@ -22,10 +22,19 @@ const displayData = async (datas) => {
 const init = async () => {
   const recipes = await getRecipes();
   displayData(recipes);
+
+  // search bar function
   const searchBar = document.querySelector("#search-bar");
   searchBar.addEventListener("input", (e) => {
     const result = searchFilter(e, recipes);
     displayData(result);
   });
+
+  // select filter tag function
+  const selects = document.querySelectorAll(".select-filters button");
+
+  selects.forEach((select) =>
+    select.addEventListener("click", (e) => tagFilter(e, recipes))
+  );
 };
 init();

@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
     <title>Les petits plats</title>
 </head>
+
 <body class="container p-5">
     <header class="d-flex flex-column justify-content-center align-items-center">
-        <img src="img/logo.png" alt="logo les petits plats">
+        <img src="img/logo.png" alt="logo les petits plats" />
         <h1 class="font-weight-bold">Les petits plats</h1>
     </header>
     <main>
         <nav class="my-3">
             <div class="position-relative">
-                <input id="search-bar" type="text" placeholder="Rechercher une recette" class="border-0 p-3 bg-light rounded">
+                <input id="search-bar" type="text" placeholder="Rechercher une recette"
+                    class="border-0 p-3 bg-light rounded" />
                 <label for="search-bar"><i class="fa-solid fa-magnifying-glass fa-xl"></i></label>
             </div>
             <div class="select-filters d-flex mt-3">
-                <button role="button" aria-haspopup="listbox" aria-expanded="true" aria-selected="true">
-                    Ingrédients
+                <button role="button" aria-haspopup="listbox" aria-expanded="true" aria-selected="true" data-tag-type="ingredients">
+                    <div>
+                        <span>Ingrédients</span>
+                        <input type="text" placeholder="Recherchez un ingrédient"/>
+                    </div>
                     <i class="fa-solid fa-angle-down"></i>
                 </button>
-                <button role="button" aria-haspopup="listbox" aria-expanded="true" aria-selected="true">
-                    Appareils
+                <button role="button" aria-haspopup="listbox" aria-expanded="true" aria-selected="true" data-tag-type="appliance">
+                    <div>
+                        <span>Appareils</span>
+                        <input type="text" placeholder="Recherchez un appareil"/>
+                    </div>
                     <i class="fa-solid fa-angle-down"></i>
                 </button>
-                <button role="button" aria-haspopup="listbox" aria-expanded="true" aria-selected="true">
-                    Ustensiles
+                <button role="button" aria-haspopup="listbox" aria-expanded="true" aria-selected="true" data-tag-type="ustensils">
+                    <div>
+                        <span>Ustensiles</span>
+                        <input type="text" placeholder="Recherchez un ustensile"/>
+                    </div>
                     <i class="fa-solid fa-angle-down"></i>
                 </button>
             </div>
         </nav>
-        <section class="recipes row gx-2 gy-5">
-
-        </section>
+        <section class="recipes row gx-2 gy-5"></section>
     </main>
 </body>
-<script type="text/javascript" src="./js/factory/recipe.js" ></script>
-<script type="text/javascript" src="./js/utils/search.js" ></script>
-<script type="text/javascript" src="./js/script.js" ></script>
+<script type="text/javascript" src="./js/factory/recipe.js"></script>
+<script type="text/javascript" src="./js/utils/search.js"></script>
+<script type="text/javascript" src="./js/script.js"></script>
 <script src="https://kit.fontawesome.com/8435413581.js" crossorigin="anonymous"></script>
+
 </html>

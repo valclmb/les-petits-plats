@@ -32,17 +32,69 @@ const searchFilter = (e, datas) => {
   return filteredArray;
 };
 
-// For tag search
-const getAllIngredients = (datas) => {
-  let ingredientsArr = [];
+const tagFilter = (e, datas) => {
+  // selectors
+  const target = e.target.closest("button");
+  const typeSpan = target.children[0].children[0];
+  const input = target.children[0].children[1];
+  const allInput = document.querySelectorAll(".select-filters input");
+  const allTagDiv = document.querySelectorAll(".tag-div");
 
-  datas.forEach(({ ingredients }) => {
-    ingredients.forEach(({ ingredient }) => {
-      if (!ingredientsArr.includes(ingredient)) {
-        ingredientsArr.push(ingredient);
-      }
-    });
+  const tagType = target.dataset.tagType;
+  const allTags = getAllTags(datas, tagType);
+
+  // Display style
+  allInput.forEach((input) => {
+    input.style.display = "none";
+    input.previousElementSibling.style.display = "block";
+  });
+  typeSpan.style.display = "none";
+  input.style.display = "block";
+
+  allTagDiv.forEach((div) => div.remove());
+  const tagDiv = document.createElement("div");
+  tagDiv.classList.add("tag-div");
+
+  // Display tags in the tag div
+  allTags.forEach((ingredient) => {
+    const tagSpan = document.createElement("span");
+    tagSpan.innerText = ingredient;
+    tagDiv.append(tagSpan);
   });
 
-  return ingredientsArr;
+  target.append(tagDiv);
+};
+
+// For tag search, return the tag without double
+const getAllTags = (datas, type) => {
+  let result = [];
+
+  if (type === "ingredients") {
+    datas.forEach(({ ingredients }) => {
+      ingredients.forEach(({ ingredient }) => {
+        if (!result.includes(ingredient)) {
+          result.push(ingredient);
+        }
+      });
+    });
+  }
+
+  if (type === "ustensils") {
+    datas.forEach(({ ustensils }) => {
+      ustensils.forEach((elem) => {
+        if (!result.includes(elem)) {
+          result.push(elem);
+        }
+      });
+    });
+  }
+  if (type === "appliance") {
+    datas.forEach(({ appliance }) => {
+      if (!result.includes(appliance)) {
+        result.push(appliance);
+      }
+    });
+  }
+
+  return result;
 };
