@@ -2,22 +2,34 @@
 const searchFilter = (e, datas) => {
   const inputValue = e.target.value.toLowerCase();
 
-  const result = datas.filter(({ name, description, ingredients }) => {
+  let filteredArray = [];
+
+  for (let i = 0; i < datas.length; i++) {
     // If one of the ingredients includes the input value 'includesIngredients' is true
     let ingr = [];
-    ingredients.forEach(({ ingredient }) => {
-      ingr.push(ingredient.toLowerCase());
-    });
-    const includesIngredients = ingr.some((elem) => elem.includes(inputValue));
 
-    // filter on title(name), description and ingredients
-    return (
+    const ingredients = datas[i].ingredients;
+    for (let j = 0; j < ingredients.length; j++) {
+      ingr.push(ingredients[j].ingredient.toLowerCase());
+    }
+
+    let includesIngredients = false;
+    for (let j = 0; j < ingr.length; j++) {
+      if (ingr[j].includes(inputValue)) {
+        includesIngredients = true;
+        break;
+      }
+    }
+
+    if (
       includesIngredients ||
-      name.toLowerCase().includes(inputValue) ||
-      description.toLowerCase().includes(inputValue)
-    );
-  });
-  return result;
+      datas[i].name.toLowerCase().includes(inputValue) ||
+      datas[i].description.toLowerCase().includes(inputValue)
+    ) {
+      filteredArray.push(datas[i]);
+    }
+  }
+  return filteredArray;
 };
 
 // For tag search
