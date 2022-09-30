@@ -33,6 +33,9 @@ const searchFilter = (e, datas) => {
 };
 
 const tagFilter = (e, datas) => {
+  const filteringByTag = (tag) => {
+    console.log(tag);
+  };
   // selectors
   const target = e.target.closest("button");
   const typeSpan = target.children[0].children[0];
@@ -56,9 +59,10 @@ const tagFilter = (e, datas) => {
   tagDiv.classList.add("tag-div");
 
   // Display tags in the tag div
-  allTags.forEach((ingredient) => {
+  allTags.forEach((tag) => {
     const tagSpan = document.createElement("span");
-    tagSpan.innerText = ingredient;
+    tagSpan.innerText = tag;
+    tagSpan.addEventListener("click", () => filteringByTag(tag));
     tagDiv.append(tagSpan);
   });
 
