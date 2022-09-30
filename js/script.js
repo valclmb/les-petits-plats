@@ -1,7 +1,7 @@
 const getRecipes = async () => {
   let recipes;
 
-  await fetch("./recipes.json")
+  await fetch("recipes.json")
     .then((res) => res.json())
     .then((json) => (recipes = json.recipes));
 
