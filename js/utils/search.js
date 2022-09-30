@@ -73,32 +73,24 @@ const tagFilter = (e, datas) => {
 const getAllTags = (datas, type) => {
   let result = [];
 
-  if (type === "ingredients") {
-    datas.forEach(({ ingredients }) => {
-      ingredients.forEach(({ ingredient }) => {
-        if (!result.includes(ingredient)) {
-          result.push(ingredient);
+  datas.forEach((data) => {
+    if (type === "appliance") {
+      result.push(data[type]);
+      return;
+    } else {
+      data[type].forEach((elem) => {
+        if (type === "ingredients") {
+          if (!result.includes(elem.ingredient.toLowerCase())) {
+            result.push(elem.ingredient.toLowerCase());
+          }
+          return;
+        }
+        if (!result.includes(elem.toLowerCase())) {
+          result.push(elem.toLowerCase());
         }
       });
-    });
-  }
-
-  if (type === "ustensils") {
-    datas.forEach(({ ustensils }) => {
-      ustensils.forEach((elem) => {
-        if (!result.includes(elem)) {
-          result.push(elem);
-        }
-      });
-    });
-  }
-  if (type === "appliance") {
-    datas.forEach(({ appliance }) => {
-      if (!result.includes(appliance)) {
-        result.push(appliance);
-      }
-    });
-  }
+    }
+  });
 
   return result;
 };
