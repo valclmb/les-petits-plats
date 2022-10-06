@@ -27,6 +27,9 @@ nav label {
     top: 50%;
     transform: translateY(-50%);
 }
+.selected-tags {
+    display: flex;
+} 
 .select-filters button{
     position: relative;
     border: 0;
