@@ -5,24 +5,19 @@ const searchFilter = (e, datas) => {
   let filteredArray = [];
 
   for (let i = 0; i < datas.length; i++) {
-    // If one of the ingredients includes the input value 'includesIngredients' is true
-    let ingr = new Set();
+    // If one of the ingredients includes the input value 'hasIngredients' is true
+    let hasIngredients = false;
 
     const ingredients = datas[i].ingredients;
     for (let j = 0; j < ingredients.length; j++) {
-      ingr.add(ingredients[j].ingredient.toLowerCase());
-    }
-
-    let includesIngredients = false;
-    for (let j = 0; j < ingr.length; j++) {
-      if (ingr[j].has(inputValue)) {
-        includesIngredients = true;
+      if (ingredients[j].ingredient.toLowerCase().includes(inputValue)) {
+        hasIngredients = true;
         break;
       }
     }
 
     if (
-      includesIngredients ||
+      hasIngredients ||
       datas[i].name.toLowerCase().includes(inputValue) ||
       datas[i].description.toLowerCase().includes(inputValue)
     ) {
