@@ -6,7 +6,7 @@ const recipe = (data) => {
     card.classList.add("card", "col-sm-6", "col-lg-4", "border-0", "py-4");
 
     const img = document.createElement("img");
-    img.setAttribute("src", "./les-petits-plats/../../img/cardImg.png");
+    img.setAttribute("src", "/les-petits-plats/../../img/cardImg.png");
     img.setAttribute("alt", "");
 
     const body = document.createElement("div");

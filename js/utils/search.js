@@ -6,16 +6,16 @@ const searchFilter = (e, datas) => {
 
   for (let i = 0; i < datas.length; i++) {
     // If one of the ingredients includes the input value 'includesIngredients' is true
-    let ingr = [];
+    let ingr = new Set();
 
     const ingredients = datas[i].ingredients;
     for (let j = 0; j < ingredients.length; j++) {
-      ingr.push(ingredients[j].ingredient.toLowerCase());
+      ingr.add(ingredients[j].ingredient.toLowerCase());
     }
 
     let includesIngredients = false;
     for (let j = 0; j < ingr.length; j++) {
-      if (ingr[j].includes(inputValue)) {
+      if (ingr[j].has(inputValue)) {
         includesIngredients = true;
         break;
       }
@@ -71,23 +71,20 @@ const tagFilter = (e, datas) => {
 
 // For tag search, return the tag without double
 const getAllTags = (datas, type) => {
-  let result = [];
+  let result = new Set();
 
   datas.forEach((data) => {
     if (type === "appliance") {
-      result.push(data[type]);
+      result.add(data[type]);
       return;
     } else {
       data[type].forEach((elem) => {
         if (type === "ingredients") {
-          if (!result.includes(elem.ingredient.toLowerCase())) {
-            result.push(elem.ingredient.toLowerCase());
-          }
+          result.add(elem.ingredient.toLowerCase());
           return;
         }
-        if (!result.includes(elem.toLowerCase())) {
-          result.push(elem.toLowerCase());
-        }
+        // ustensils
+        result.add(elem.toLowerCase());
       });
     }
   });
