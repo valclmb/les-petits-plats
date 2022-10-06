@@ -34,7 +34,10 @@ nav label {
     display: flex;
 } 
 .selected-tags div {
-    padding: 5px;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 4px;
 }
 .selected-tags[data-tag-type="ingredients"] {
     background-color: blue;

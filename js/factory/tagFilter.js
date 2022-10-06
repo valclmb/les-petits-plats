@@ -46,8 +46,26 @@ const tagFilter = (e, datas) => {
 const selectedTag = (title, type) => {
   const parent = document.querySelector(".selected-tags");
   const tag = document.createElement("div");
-  tag.innerText = title;
-  tag.classList.add("selected-tags");
+
+  // Check if a tag-type already exist, delete if yes
+
+  const tagType = document.querySelector(
+    `.selected-tags[data-tag-type=${type}]`
+  );
+  if (tagType) tagType.remove();
+  // Create element
+  tag.innerHTML = `${title}`;
+  tag.classList.add("selected-tags", "mr-3");
   tag.dataset.tagType = type;
+
+  const deleteIcon = document.createElement("span");
+  deleteIcon.innerHTML = `<i class="fa-regular fa-circle-xmark mx-2"></i>`;
+  // Delete tags
+  deleteIcon.addEventListener("click", (e) =>
+    e.target.closest(".selected-tags").remove()
+  );
+
+  // Appends
+  tag.append(deleteIcon);
   parent.append(tag);
 };
