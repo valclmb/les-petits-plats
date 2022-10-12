@@ -16,6 +16,7 @@ const tagFilter = (e, datas) => {
   });
   typeSpan.style.display = "none";
   input.style.display = "block";
+  input.addEventListener("input", (e) => searchTagFilter(e, allTags));
 
   allTagDiv.forEach((div) => div.remove());
   const tagDiv = document.createElement("div");

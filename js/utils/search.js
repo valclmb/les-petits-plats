@@ -53,3 +53,16 @@ const getAllTags = (datas, type) => {
 const filteringByTag = (tag) => {
   console.log(tag);
 };
+
+const searchTagFilter = (e, allTags) => {
+  const filterValue = e.target.value.toLowerCase();
+  const divTag = e.target.parentElement.parentElement.lastChild;
+  const divSpans = divTag.children;
+
+  Array.from(divSpans).forEach((child) => {
+    child.style.display = "block";
+    if (!child.innerText.toLowerCase().includes(filterValue)) {
+      child.style.display = "none";
+    }
+  });
+};
