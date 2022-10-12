@@ -1,7 +1,6 @@
 // Return an array of filtered recipes corresponding to search-bar input value
 const searchFilter = (e, datas) => {
-  const inputValue = e.target.value.toLowerCase();
-
+  const value = e.target.value.toLowerCase();
   let filteredArray = [];
 
   for (let i = 0; i < datas.length; i++) {
@@ -10,7 +9,7 @@ const searchFilter = (e, datas) => {
 
     const ingredients = datas[i].ingredients;
     for (let j = 0; j < ingredients.length; j++) {
-      if (ingredients[j].ingredient.toLowerCase().includes(inputValue)) {
+      if (ingredients[j].ingredient.toLowerCase().includes(value)) {
         hasIngredients = true;
         break;
       }
@@ -18,8 +17,8 @@ const searchFilter = (e, datas) => {
 
     if (
       hasIngredients ||
-      datas[i].name.toLowerCase().includes(inputValue) ||
-      datas[i].description.toLowerCase().includes(inputValue)
+      datas[i].name.toLowerCase().includes(value) ||
+      datas[i].description.toLowerCase().includes(value)
     ) {
       filteredArray.push(datas[i]);
     }
@@ -50,15 +49,12 @@ const getAllTags = (datas, type) => {
   return result;
 };
 
-const filteringByTag = (tag) => {
-  console.log(tag);
-};
-
-const searchTagFilter = (e, allTags) => {
+const searchTagFilter = (e) => {
   const filterValue = e.target.value.toLowerCase();
   const divTag = e.target.parentElement.parentElement.lastChild;
   const divSpans = divTag.children;
 
+  // Display none tagspan if don't includes input value
   Array.from(divSpans).forEach((child) => {
     child.style.display = "block";
     if (!child.innerText.toLowerCase().includes(filterValue)) {

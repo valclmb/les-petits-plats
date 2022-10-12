@@ -16,7 +16,7 @@ const tagFilter = (e, datas) => {
   });
   typeSpan.style.display = "none";
   input.style.display = "block";
-  input.addEventListener("input", (e) => searchTagFilter(e, allTags));
+  input.addEventListener("input", searchTagFilter);
 
   allTagDiv.forEach((div) => div.remove());
   const tagDiv = document.createElement("div");
@@ -35,7 +35,6 @@ const tagFilter = (e, datas) => {
     const tagSpan = document.createElement("span");
     tagSpan.innerText = tag;
     tagSpan.addEventListener("click", () => {
-      filteringByTag(tag);
       selectedTag(tag, tagType);
     });
     tagDiv.append(tagSpan);
