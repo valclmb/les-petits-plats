@@ -101,8 +101,15 @@ nav label {
     font-size: 15px;
     text-align: left;
 }
+.card-img {
+    background-color: rgb(198, 198, 198);
+    width: 100%;
+    height: 150px;
+    border-radius: 4px 4px 0 0;
+}
 .card-body {
     background-color: var(--color-bg);
+    border-radius:  0 0 4px 4px;
 }
 .card-body-title {
     display: flex;
@@ -129,4 +136,5 @@ nav label {
 .card-body-infos p {
     width: 50%;
     overflow: auto;
+    margin: 0;
 }

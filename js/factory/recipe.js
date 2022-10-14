@@ -5,9 +5,8 @@ const recipe = (data) => {
     const card = document.createElement("article");
     card.classList.add("card", "col-sm-6", "col-lg-4", "border-0", "py-4");
 
-    const img = document.createElement("img");
-    img.setAttribute("src", "./les-petits-plats/../../img/cardImg.png");
-    img.setAttribute("alt", "");
+    const img = document.createElement("div");
+    img.classList.add("card-img");
 
     const body = document.createElement("div");
     body.classList.add("card-body");
