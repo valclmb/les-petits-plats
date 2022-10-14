@@ -35,8 +35,7 @@ const tagFilter = (e, datas) => {
     const tagSpan = document.createElement("span");
     tagSpan.innerText = tag;
     tagSpan.addEventListener("click", () => {
-      selectedTag(tag, tagType);
-      searchTagFilter(datas);
+      selectedTag(tag, tagType, datas);
     });
     tagDiv.append(tagSpan);
   });
@@ -44,7 +43,7 @@ const tagFilter = (e, datas) => {
   target.append(tagDiv);
 };
 
-const selectedTag = (title, type) => {
+const selectedTag = (title, type, datas) => {
   const parent = document.querySelector(".selected-tags");
   const tag = document.createElement("div");
 
@@ -58,14 +57,39 @@ const selectedTag = (title, type) => {
   tag.classList.add("selected-tag", "mr-3");
   tag.dataset.tagType = type;
 
+  // Delete icon
   const deleteIcon = document.createElement("span");
   deleteIcon.innerHTML = `<i class="fa-regular fa-circle-xmark mx-2"></i>`;
-  // Delete tags
-  deleteIcon.addEventListener("click", (e) =>
-    e.target.closest(".selected-tags").remove()
-  );
 
   // Appends
   tag.append(deleteIcon);
   parent.append(tag);
+
+  const tags = getActivesTags();
+
+  displayData(searchTagFilter(tags, datas));
+
+  // Delete tags
+  deleteIcon.addEventListener("click", (e) => closeTag(e, datas));
+};
+
+const closeTag = (e, datas) => {
+  e.target.closest(".selected-tag").remove();
+
+  const tags = getActivesTags();
+  displayData(searchTagFilter(tags, datas));
+};
+
+const getActivesTags = () => {
+  // Detect all the tags and call filter function
+  const activesTagsChild = document.querySelectorAll(".selected-tag");
+
+  let tags = [];
+
+  activesTagsChild.forEach((tag) => {
+    const type = tag.dataset.tagType;
+    const content = tag.innerText.toLowerCase();
+    tags.push({ type, content });
+  });
+  return tags;
 };

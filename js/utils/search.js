@@ -63,8 +63,29 @@ const searchInTags = (e) => {
   });
 };
 
-const searchTagFilter = (datas) => {
-  const activesTagsChild = document.querySelector(".selected-tags").children;
+const searchTagFilter = (tags, datas) => {
+  let filtered = datas;
+  tags.forEach(({ type, content }) => {
+    let filter = filtered.filter(({ ingredients, appliance, ustensils }) => {
+      let haveTag = false;
+      if (type === "ingredients") {
+        ingredients.some(({ ingredient }) => {
+          if (ingredient.toLowerCase().includes(content.toLowerCase()))
+            haveTag = true;
+        });
+      } else if (type === "appliance") {
+        if (appliance.toLowerCase().includes(content.toLowerCase()))
+          haveTag = true;
+      } else if (type === "ustensils") {
+        ustensils.some((ustensil) => {
+          if (ustensil.toLowerCase().includes(content.toLowerCase()))
+            haveTag = true;
+        });
+      }
+      return haveTag;
+    });
+    filtered = filter;
+  });
 
-  acti;
+  return filtered;
 };

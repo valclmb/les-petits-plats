@@ -21,12 +21,17 @@ const displayData = async (datas) => {
 
 const init = async () => {
   const recipes = await getRecipes();
+
   displayData(recipes);
 
   // search bar function
   const searchBar = document.querySelector("#search-bar");
   searchBar.addEventListener("input", (e) => {
-    const result = searchFilter(e, recipes);
+    const tags = getActivesTags();
+    const result = searchFilter(
+      e,
+      tags.length > 0 ? searchTagFilter(tags, recipes) : recipes
+    );
     displayData(result);
   });
 
