@@ -49,7 +49,7 @@ const getAllTags = (datas, type) => {
   return result;
 };
 
-const searchTagFilter = (e) => {
+const searchInTags = (e) => {
   const filterValue = e.target.value.toLowerCase();
   const divTag = e.target.parentElement.parentElement.lastChild;
   const divSpans = divTag.children;
@@ -61,4 +61,10 @@ const searchTagFilter = (e) => {
       child.style.display = "none";
     }
   });
+};
+
+const searchTagFilter = (datas) => {
+  const activesTagsChild = document.querySelector(".selected-tags").children;
+
+  acti;
 };

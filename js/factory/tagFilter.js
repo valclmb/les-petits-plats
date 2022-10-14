@@ -16,7 +16,7 @@ const tagFilter = (e, datas) => {
   });
   typeSpan.style.display = "none";
   input.style.display = "block";
-  input.addEventListener("input", searchTagFilter);
+  input.addEventListener("input", searchInTags);
 
   allTagDiv.forEach((div) => div.remove());
   const tagDiv = document.createElement("div");
@@ -36,6 +36,7 @@ const tagFilter = (e, datas) => {
     tagSpan.innerText = tag;
     tagSpan.addEventListener("click", () => {
       selectedTag(tag, tagType);
+      searchTagFilter(datas);
     });
     tagDiv.append(tagSpan);
   });
@@ -48,14 +49,13 @@ const selectedTag = (title, type) => {
   const tag = document.createElement("div");
 
   // Check if a tag-type already exist, delete if yes
-
   const tagType = document.querySelector(
-    `.selected-tags[data-tag-type=${type}]`
+    `.selected-tag[data-tag-type=${type}]`
   );
   if (tagType) tagType.remove();
   // Create element
   tag.innerHTML = `${title}`;
-  tag.classList.add("selected-tags", "mr-3");
+  tag.classList.add("selected-tag", "mr-3");
   tag.dataset.tagType = type;
 
   const deleteIcon = document.createElement("span");

@@ -33,13 +33,14 @@ nav label {
 .selected-tags {
     display: flex;
 } 
-.selected-tags div {
+.selected-tag{
     display: flex;
     align-items: center;
     padding: 5px 10px;
     border-radius: 4px;
+    color: white;
 }
-.selected-tags[data-tag-type="ingredients"] {
+.selected-tag[data-tag-type="ingredients"] {
     background-color: blue;
 }
 .select-filters button{
@@ -54,18 +55,16 @@ nav label {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: white;
 }
-.select-filters button[data-tag-type="ingredients"], .selected-tags[data-tag-type="ingredients"]{
+.select-filters button[data-tag-type="ingredients"], .selected-tag[data-tag-type="ingredients"]{
     background-color: var(--color-ingredients);
-    color: white;
 }
-.select-filters button[data-tag-type="appliance"],.selected-tags[data-tag-type="appliance"] {
+.select-filters button[data-tag-type="appliance"],.selected-tag[data-tag-type="appliance"] {
     background-color: var(--color-appliances);
-    color: white;
 }
-.select-filters button[data-tag-type="ustensils"],.selected-tags[data-tag-type="ustensils"]{
+.select-filters button[data-tag-type="ustensils"],.selected-tag[data-tag-type="ustensils"]{
     background-color: var(--color-ustensils);
-    color: white;
 }
 .select-filters button input{
     display: none;
