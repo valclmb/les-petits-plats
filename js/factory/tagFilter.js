@@ -77,7 +77,8 @@ const closeTag = (e, datas) => {
   e.target.closest(".selected-tag").remove();
 
   const tags = getActivesTags();
-  displayData(searchTagFilter(tags, datas));
+
+  displayData(tags.length > 0 ? searchTagFilter(tags, datas) : datas);
 };
 
 const getActivesTags = () => {

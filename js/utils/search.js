@@ -64,28 +64,29 @@ const searchInTags = (e) => {
 };
 
 const searchTagFilter = (tags, datas) => {
-  let filtered = datas;
-  tags.forEach(({ type, content }) => {
-    let filter = filtered.filter(({ ingredients, appliance, ustensils }) => {
-      let haveTag = false;
+  let result = datas.filter(({ ingredients, ustensils, appliance }) => {
+    let haveIngredients = false;
+    let haveUstensils = false;
+    let haveAppliances = false;
+
+    // Is true if one of the elements includes the tag's content
+    tags.forEach(({ type, content }) => {
       if (type === "ingredients") {
-        ingredients.some(({ ingredient }) => {
-          if (ingredient.toLowerCase().includes(content.toLowerCase()))
-            haveTag = true;
+        ingredients.forEach(({ ingredient }) => {
+          if (ingredient.toLowerCase().includes(content))
+            haveIngredients = true;
         });
-      } else if (type === "appliance") {
-        if (appliance.toLowerCase().includes(content.toLowerCase()))
-          haveTag = true;
       } else if (type === "ustensils") {
-        ustensils.some((ustensil) => {
-          if (ustensil.toLowerCase().includes(content.toLowerCase()))
-            haveTag = true;
+        haveUstensils = ustensils.some((elem) => {
+          return elem.toLowerCase().includes(content);
         });
+      } else {
+        // type appliances
+        haveAppliances = appliance.toLowerCase().includes(content);
       }
-      return haveTag;
     });
-    filtered = filter;
+    return haveIngredients || haveUstensils || haveAppliances;
   });
 
-  return filtered;
+  return result;
 };
