@@ -110,6 +110,7 @@ nav label {
 .card-body {
     background-color: var(--color-bg);
     border-radius:  0 0 4px 4px;
+    padding-bottom:10px;
 }
 .card-body-title {
     display: flex;
@@ -135,6 +136,10 @@ nav label {
 }
 .card-body-infos p {
     width: 50%;
-    overflow: auto;
+    height: max-content;
     margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
