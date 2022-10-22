@@ -1,29 +1,21 @@
 // Return an array of filtered recipes corresponding to search-bar input value
 const searchFilter = (e, datas) => {
-  const value = e.target.value.toLowerCase();
-  let filteredArray = [];
+  const inputValue = e.target.value.toLowerCase();
 
-  for (let i = 0; i < datas.length; i++) {
-    // If one of the ingredients includes the input value 'hasIngredients' is true
-    let hasIngredients = false;
+  const result = datas.filter(({ name, description, ingredients }) => {
+    // If one of the ingredients includes the input value 'includesIngredients' is true
+    const hasIngredients = ingredients.some(({ ingredient }) =>
+      ingredient.toLowerCase().includes(inputValue)
+    );
 
-    const ingredients = datas[i].ingredients;
-    for (let j = 0; j < ingredients.length; j++) {
-      if (ingredients[j].ingredient.toLowerCase().includes(value)) {
-        hasIngredients = true;
-        break;
-      }
-    }
-
-    if (
+    // filter on title(name), description and ingredients
+    return (
       hasIngredients ||
-      datas[i].name.toLowerCase().includes(value) ||
-      datas[i].description.toLowerCase().includes(value)
-    ) {
-      filteredArray.push(datas[i]);
-    }
-  }
-  return filteredArray;
+      name.toLowerCase().includes(inputValue) ||
+      description.toLowerCase().includes(inputValue)
+    );
+  });
+  return result;
 };
 
 // For tag search, return the tag without double
